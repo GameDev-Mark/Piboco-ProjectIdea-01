@@ -7,7 +7,12 @@ public class InputName : MonoBehaviour
     //Variables
     public TMP_Text enterNameVar;  // text name for user
     private TouchScreenKeyboard keyboard;  // keyboard variable
+    public GameObject pageMover;
 
+    private void Start()
+    {
+        
+    }
 
     // unitys update function
     private void Update()
@@ -18,6 +23,12 @@ public class InputName : MonoBehaviour
             {
                 enterNameVar.text = keyboard.text;  // apply whatever is inputted into the keyboard to the 'name' variable
             }
+            
+            if(keyboard.status == TouchScreenKeyboard.Status.Done)
+            {
+                
+                Debug.Log("Done typing name _ turn to next page(TITLE)");
+            }
         }
         catch (NullReferenceException) { }
     }
@@ -26,6 +37,7 @@ public class InputName : MonoBehaviour
     public void ClickToTypeName()
     {
         keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-        Debug.Log("Mouse clicked ");
+        Debug.Log("Mouse clicked button");
+        pageMover.GetComponent<Animator>().SetTrigger("canGoToTitlePage");
     }
 }
