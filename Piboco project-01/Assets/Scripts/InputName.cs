@@ -7,27 +7,31 @@ public class InputName : MonoBehaviour
     //Variables
     public TMP_Text enterNameVar;  // text name for user
     public TMP_Text isYourNameConfirmName;  // confirmation of name text
-    string nameString;  // converting ui text into a string to change name
 
     TouchScreenKeyboard keyboard;  // keyboard variable
 
     public GameObject pageMover;  // gameobject that holds the pages, the user can move
     public GameObject confirmNameBox;  // confirmation box pops up asking the user if they have inputted the correct name
+    GameObject[] userName;
 
-
-    // unitys start function
     private void Start()
     {
-        nameString = isYourNameConfirmName.text = ("Is ' Name ' your name?").ToString();
+        userName = GameObject.FindGameObjectsWithTag("Name");
+
+    
     }
 
     // unitys update function
     void Update()
     {
-        if(nameString.Contains("Name"))
+        if (userName.Length >= 0)
         {
-            isYourNameConfirmName.text = nameString.Replace("Name", enterNameVar.text);
-            Debug.Log("Name changed");
+            // FIND ALL TMP_Text COMPONENTS AND REPLACE 'NAME' IN THEM TO THE USER'S ENTERED NAME
+            foreach (GameObject name in userName)
+            {
+                name.GetComponent<TextMeshProUGUI>().text = name.GetComponent<TextMeshProUGUI>().text.Replace("Name", enterNameVar.text);
+                Debug.Log("CHECK name change start " + userName.Length);
+            }
         }
 
         try
