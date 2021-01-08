@@ -14,12 +14,13 @@ public class InputName : MonoBehaviour
     public GameObject confirmNameBox;  // confirmation box pops up asking the user if they have inputted the correct name
     GameObject[] userName;
 
+    // unitys start function
     private void Start()
     {
         userName = GameObject.FindGameObjectsWithTag("Name");
 
-    
     }
+
 
     // unitys update function
     void Update()
@@ -30,6 +31,7 @@ public class InputName : MonoBehaviour
             foreach (GameObject name in userName)
             {
                 name.GetComponent<TextMeshProUGUI>().text = name.GetComponent<TextMeshProUGUI>().text.Replace("Name", enterNameVar.text);
+                name.GetComponent<TextMeshProUGUI>().text = name.GetComponent<TextMeshProUGUI>().text.Replace("Names", enterNameVar.text + "s");
                 Debug.Log("CHECK name change start " + userName.Length);
             }
         }

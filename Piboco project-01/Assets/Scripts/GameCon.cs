@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class GameCon : MonoBehaviour
 {
     //Variables
-    
+    public GameObject pageMover;
 
     private void Update()
     {
@@ -18,12 +17,16 @@ public class GameCon : MonoBehaviour
         {
             if (Input.mousePosition.x > Screen.width / 2)
             {
+                pageMover.GetComponent<RectTransform>().Translate(Vector3.left * 3f);
                 Debug.Log("Touch and drag right side of screen");
             }
-            else if (Input.mousePosition.x < Screen.width / 2)
+
+            if (Input.mousePosition.x < Screen.width / 2)
             {
+                pageMover.GetComponent<RectTransform>().Translate(Vector3.right * 3f);
                 Debug.Log("Touch and drag left side of screen");
             }
+            
         }
     }
 }
