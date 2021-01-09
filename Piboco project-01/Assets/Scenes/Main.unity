@@ -2165,6 +2165,7 @@ GameObject:
   - component: {fileID: 1143945946}
   - component: {fileID: 1143945945}
   - component: {fileID: 1143945947}
+  - component: {fileID: 1143945948}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2186,7 +2187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enterNameVar: {fileID: 1566236715}
   isYourNameConfirmName: {fileID: 1995968939}
-  pageMover: {fileID: 2055417215}
+  pageMoverAll: {fileID: 2055417216}
   confirmNameBox: {fileID: 1019759566}
 --- !u!4 &1143945946
 Transform:
@@ -2214,8 +2215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b6bc07de995d74f926601967c74b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastPage: {fileID: 1327886032}
-  pagerMoverRectT: {fileID: 2055417216}
   namePage: {fileID: 851202035}
   _titlePage: {fileID: 1902790370}
   _page01: {fileID: 150793832}
@@ -2224,6 +2223,21 @@ MonoBehaviour:
   _page04: {fileID: 74060279}
   _page05: {fileID: 1378909004}
   _page06: {fileID: 1327886033}
+--- !u!114 &1143945948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143945944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4947d21387d784994dfa0c527bcfb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastPage: {fileID: 1327886032}
+  titlePage: {fileID: 1902790369}
+  pagerMoverRectT: {fileID: 2055417216}
 --- !u!1 &1327886032
 GameObject:
   m_ObjectHideFlags: 0

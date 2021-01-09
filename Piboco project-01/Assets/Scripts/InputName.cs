@@ -8,9 +8,12 @@ public class InputName : MonoBehaviour
     public TMP_Text enterNameVar;  // text name for user
     public TMP_Text isYourNameConfirmName;  // confirmation of name text
 
+    public RectTransform pageMoverAll;  // transform that holds the pages, the user can move
+
     TouchScreenKeyboard keyboard;  // keyboard variable
 
-    public GameObject pageMover;  // gameobject that holds the pages, the user can move
+    bool _isFinshedName;  // boolean stating when name has been entered in by the user
+
     public GameObject confirmNameBox;  // confirmation box pops up asking the user if they have inputted the correct name
     GameObject[] userName;  // collecting an array of gameobjects and naming them userName
 
@@ -19,7 +22,6 @@ public class InputName : MonoBehaviour
     void Start()
     {
         userName = GameObject.FindGameObjectsWithTag("Name");
-
     }
 
     // unitys update function
@@ -30,12 +32,16 @@ public class InputName : MonoBehaviour
             if (keyboard.active)  // check to see if the keyboard is active
             {
                 enterNameVar.text = keyboard.text;  // apply whatever is inputted into the keyboard to the 'name' variable
-                isYourNameConfirmName.text = keyboard.text;
+                isYourNameConfirmName.text = "Is " + keyboard.text + " your name?";
             }
 
-            if (keyboard.status == TouchScreenKeyboard.Status.Done)
+            if (keyboard.status == TouchScreenKeyboard.Status.Done && _isFinshedName == false)
             {
                 confirmNameBox.SetActive(true);
+            }
+            else if (keyboard.status == TouchScreenKeyboard.Status.Done && _isFinshedName == true)
+            {
+                confirmNameBox.SetActive(false);
             }
         }
         catch (NullReferenceException) { }
@@ -61,6 +67,9 @@ public class InputName : MonoBehaviour
                 Debug.Log("CHECK name change start " + userName.Length);
             }
         }
+        pageMoverAll.anchoredPosition = new Vector2(-800f, pageMoverAll.anchoredPosition.y);
+        GetComponent<UserTouchMovement>().enabled = true;
+        _isFinshedName = true;
         confirmNameBox.SetActive(false);
         //Debug.Log("YEs confirm name _ turn to next page(TITLE)");
     }
