@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Name
   - LastPage
+  - FirstPage
+  - PageMover
   layers:
   - Default
   - TransparentFX
