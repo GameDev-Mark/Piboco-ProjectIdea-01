@@ -13,25 +13,23 @@ public class UserTouchMovement : MonoBehaviour
     bool _lastPageBlocker; // boolean trigger to see if the user is at last page 
 
 
-    // Start is called before the first frame update
+    // unitys start function
     void Start()
     {
         scrollSpeed = 18f;
     }
 
-    // Update is called once per frame
+    // unitys update function
     void Update()
     {
-        Debug.Log("FIRST PAGE is " + _firstPageBlocker);
-        Debug.Log("LAST PAGE is " + _lastPageBlocker);
         NextPages();
 
-        if (titlePage.transform.position.x > Screen.width / 2)
+        if (titlePage.transform.position.x > Screen.width / 2) // collecting info if the first page comes into screen view
         {
             _firstPageBlocker = true;
         }
 
-        if (lastPage.transform.position.x < Screen.width / 2)
+        if (lastPage.transform.position.x < Screen.width / 2) // collecting info if the last page comes into screen view
         {
             _lastPageBlocker = true;
         }
@@ -40,27 +38,27 @@ public class UserTouchMovement : MonoBehaviour
     // tap and hold left or right side of the screen to go back or forwards on the pages
     public void NextPages()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) // scrolls the pages forwards or backwards depending on if the user is clicking the left side or the right side of the screen
         {
-            if (Input.mousePosition.x < Screen.width / 2)
+            if (Input.mousePosition.x < Screen.width / 2)  
             {
                 pagerMoverRectT.Translate(Vector3.right * scrollSpeed);
                 _lastPageBlocker = false;
-                Debug.Log("Touch left side of screen to move left (BACKWARDS)");
+                //Debug.Log("Touch left side of screen to move left (BACKWARDS)");
             }
             else if (Input.mousePosition.x > Screen.width / 2)
             {
                 pagerMoverRectT.Translate(Vector3.left * scrollSpeed);
                 _firstPageBlocker = false;
-                Debug.Log("Touch right side of screen to move right (FORWARDS)");
+                //Debug.Log("Touch right side of screen to move right (FORWARDS)");
             }
 
-            if (_firstPageBlocker == true) // stops the scrolling at the first page 
+            if (_firstPageBlocker == true) // blocks scrolling past the first page
             {
                 pagerMoverRectT.anchoredPosition = new Vector2(-800, pagerMoverRectT.anchoredPosition.y);
             }
 
-            if (_lastPageBlocker == true) // stops the scrolling at the last page
+            if (_lastPageBlocker == true) // blocks scrolling past the last page
             {
                 pagerMoverRectT.anchoredPosition = new Vector2(-5600f, pagerMoverRectT.anchoredPosition.y);
             }

@@ -67,10 +67,12 @@ public class InputName : MonoBehaviour
                 Debug.Log("CHECK name change start " + userName.Length);
             }
         }
+
         pageMoverAll.anchoredPosition = new Vector2(-800f, pageMoverAll.anchoredPosition.y);
         GetComponent<UserTouchMovement>().enabled = true;
         _isFinshedName = true;
         confirmNameBox.SetActive(false);
+        AudioSource.PlayClipAtPoint(GetComponent<GameCon>().popSFX, Camera.main.transform.position);
         //Debug.Log("YEs confirm name _ turn to next page(TITLE)");
     }
 
@@ -79,6 +81,7 @@ public class InputName : MonoBehaviour
     {
         keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
         confirmNameBox.SetActive(false);
+        AudioSource.PlayClipAtPoint(GetComponent<GameCon>().popSFX, Camera.main.transform.position);
         //Debug.Log("Not my name return to keyboard_ turn to next page(TITLE)");
     }
 }
