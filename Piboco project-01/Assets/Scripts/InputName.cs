@@ -51,6 +51,7 @@ public class InputName : MonoBehaviour
     public void ClickToTypeName()
     {
         keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+        AudioSource.PlayClipAtPoint(GetComponent<GameCon>().popSFX, Camera.main.transform.position);
         //Debug.Log("Touch to enter name");
     }
 
